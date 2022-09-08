@@ -1,9 +1,12 @@
 package com.wesleyscorrea.springComViaCEP.entities;
 
+import javax.persistence.Entity;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
 public class Address implements Serializable {
+
 
     private Long id;
     private String publicPlace;

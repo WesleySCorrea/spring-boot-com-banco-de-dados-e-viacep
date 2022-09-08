@@ -1,16 +1,22 @@
 package com.wesleyscorrea.springComViaCEP.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-
+@Entity
 public class User implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Integer CPF;
+    private Long CPF;
     private Date birthday;
     private String email;
     private List<Address> address;
@@ -18,7 +24,7 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Long id, String name, Integer CPF, Date birthday, String email, List<Address> address) {
+    public User(Long id, String name, Long CPF, Date birthday, String email, List<Address> address) {
         this.id = id;
         this.name = name;
         this.CPF = CPF;
@@ -43,11 +49,11 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public Integer getCPF() {
+    public Long getCPF() {
         return CPF;
     }
 
-    public void setCPF(Integer CPF) {
+    public void setCPF(Long CPF) {
         this.CPF = CPF;
     }
 
