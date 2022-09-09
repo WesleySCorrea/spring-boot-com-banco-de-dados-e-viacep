@@ -1,26 +1,36 @@
 package com.wesleyscorrea.springcomviacep.resources;
 
 import com.wesleyscorrea.springcomviacep.entities.User;
+import com.wesleyscorrea.springcomviacep.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.TimeZone;
+import javax.annotation.Resource;
+import java.util.List;
 
+@Resource
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
 
+    @Autowired
+    private UserService service;
+
     @GetMapping
-    public ResponseEntity<User> findAll() throws ParseException {
+    public ResponseEntity<List<User>> findAll(){
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        List<User> list = service.findAll();
+        return ResponseEntity.ok().body(list);
+    }
 
-        User u = new User(1L, "Wesley", 37715861863L, sdf.parse("07/02/1991"), "Wesley@gmail.com");
-        return ResponseEntity.ok().body(u);
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<User> findById(@PathVariable Long id) {
+
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj);
     }
 }
