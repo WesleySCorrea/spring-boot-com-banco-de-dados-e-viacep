@@ -1,13 +1,14 @@
 package com.wesleyscorrea.springComViaCEP.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 public class Address implements Serializable {
 
-
+    @Id
     private Long id;
     private String publicPlace;
     private Integer number;
