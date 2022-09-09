@@ -1,11 +1,16 @@
 package com.wesleyscorrea.springcomviacep.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Objects;
 
-
+@Entity
+@Table(name = "tb_address")
 public class Address implements Serializable {
 
+    @Id
     private Long id;
     private String publicPlace;
     private Integer number;

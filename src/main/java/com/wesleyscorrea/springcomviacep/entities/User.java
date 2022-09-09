@@ -1,17 +1,13 @@
 package com.wesleyscorrea.springcomviacep.entities;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.annotation.ComponentScan;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "tb_user")
-//@ComponentScan("com.wesleyscorrea.springcomviacep")
-//@EntityScan("com.wesleyscorrea.springcomviacep.entities")
 public class User implements Serializable {
 
     @Id
@@ -76,7 +72,7 @@ public class User implements Serializable {
     }
 
     //public List<Address> getAddress() {
-     //   return address;
+    //    return address;
     //}
 
     @Override
