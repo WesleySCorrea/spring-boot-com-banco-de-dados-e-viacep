@@ -1,15 +1,17 @@
-package com.wesleyscorrea.springComViaCEP.entities;
+package com.wesleyscorrea.springcomviacep.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "tb_user")
+//@ComponentScan("com.wesleyscorrea.springcomviacep")
+//@EntityScan("com.wesleyscorrea.springcomviacep.entities")
 public class User implements Serializable {
 
     @Id
@@ -19,18 +21,18 @@ public class User implements Serializable {
     private Long CPF;
     private Date birthday;
     private String email;
-    private List<Address> address;
+    //private List<Address> address;
 
     public User() {
     }
 
-    public User(Long id, String name, Long CPF, Date birthday, String email, List<Address> address) {
+    public User(Long id, String name, Long CPF, Date birthday, String email) {
         this.id = id;
         this.name = name;
         this.CPF = CPF;
         this.birthday = birthday;
         this.email = email;
-        this.address = address;
+        //this.address = address;
     }
 
     public Long getId() {
@@ -73,9 +75,9 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public List<Address> getAddress() {
-        return address;
-    }
+    //public List<Address> getAddress() {
+     //   return address;
+    //}
 
     @Override
     public boolean equals(Object o) {
