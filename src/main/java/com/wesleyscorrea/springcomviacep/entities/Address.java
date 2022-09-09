@@ -1,8 +1,6 @@
 package com.wesleyscorrea.springcomviacep.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -11,6 +9,7 @@ import java.util.Objects;
 public class Address implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String publicPlace;
     private Integer number;
@@ -18,6 +17,10 @@ public class Address implements Serializable {
     private String district;
     private String city;
     private Integer cep;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Address(){
     }
@@ -86,6 +89,14 @@ public class Address implements Serializable {
 
     public void setCep(Integer cep) {
         this.cep = cep;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

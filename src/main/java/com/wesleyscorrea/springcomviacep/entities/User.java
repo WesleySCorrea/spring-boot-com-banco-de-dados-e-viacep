@@ -2,6 +2,7 @@ package com.wesleyscorrea.springcomviacep.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -17,7 +18,9 @@ public class User implements Serializable {
     private Long CPF;
     private Date birthday;
     private String email;
-    //private List<Address> address;
+
+    @OneToMany(mappedBy = "user")
+    private List<Address> address = new ArrayList<>();
 
     public User() {
     }
@@ -28,7 +31,6 @@ public class User implements Serializable {
         this.CPF = CPF;
         this.birthday = birthday;
         this.email = email;
-        //this.address = address;
     }
 
     public Long getId() {
@@ -71,9 +73,9 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    //public List<Address> getAddress() {
-    //    return address;
-    //}
+    public List<Address> getAddress() {
+        return address;
+    }
 
     @Override
     public boolean equals(Object o) {
