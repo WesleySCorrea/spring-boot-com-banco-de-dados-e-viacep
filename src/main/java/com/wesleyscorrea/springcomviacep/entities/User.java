@@ -18,7 +18,7 @@ public class User implements Serializable {
     private Long id;
     private String name;
     private Long CPF;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "GMT")
     private Date birthday;
     private String email;
 
