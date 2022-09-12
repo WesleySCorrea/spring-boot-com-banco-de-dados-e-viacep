@@ -1,5 +1,8 @@
 package com.wesleyscorrea.springcomviacep.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,6 +19,7 @@ public class User implements Serializable {
     private Long id;
     private String name;
     private Long CPF;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Date birthday;
     private String email;
 

@@ -1,5 +1,7 @@
 package com.wesleyscorrea.springcomviacep.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -18,6 +20,7 @@ public class Address implements Serializable {
     private String city;
     private Integer cep;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -25,7 +28,7 @@ public class Address implements Serializable {
     public Address(){
     }
 
-    public Address(Long id, String publicPlace, Integer number, String complement, String district, String city, Integer cep) {
+    public Address(Long id, String publicPlace, Integer number, String complement, String district, String city, Integer cep, User user) {
         this.id = id;
         this.publicPlace = publicPlace;
         this.number = number;
@@ -33,6 +36,7 @@ public class Address implements Serializable {
         this.district = district;
         this.city = city;
         this.cep = cep;
+        this.user = user;
     }
 
     public Long getId() {
